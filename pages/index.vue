@@ -27,15 +27,14 @@
 </template>
 
 <script>
-import axios from 'axios'
 import SearchInput from '~/components/SearchInput.vue';
 import NuxtShoping from '~/components/NuxtShoping.vue';
-import { fetchProductByKeyword } from '~/api';
+import { fetchProduct, fetchProductByKeyword } from '~/api';
 
 export default {
 components: { SearchInput, NuxtShoping },
 async asyncData() {
-  const response = await axios.get('http://localhost:3000/products');
+  const response = await fetchProduct();
   const products = response.data.map((item) => ({
       ...item,
       imageUrl: `${item.imageUrl}?random=${Math.random()}`
