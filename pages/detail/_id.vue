@@ -31,6 +31,17 @@ export default {
       const product = response.data
       return { product }
   },
+  head () {
+    return {
+    title: `shopping item detail - ${this.product.name}`,
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Shopping item detail' },
+      { name: 'format-detection', content: 'telephone=no' }
+    ],
+  }
+  },
   methods: {
     async addToCart() {
       const response = await createCartItem(this.product)
